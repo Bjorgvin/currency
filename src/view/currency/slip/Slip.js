@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TextPanel } from '../../components/containers.js'
 import { HeaderText } from '../../components/texts.js'
 
-class Overview extends Component {
+class Slip extends Component {
   componentWillMount() {
     const { fetchCurrency } = this.props
     fetchCurrency()
@@ -30,4 +30,4 @@ class Overview extends Component {
     }
   }
 }
-export default Overview
+export default Slip

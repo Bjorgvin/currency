@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router'
 
-import Overview from './overview'
-
+import Swiper from './SwipeComponent'
 export const root = '/currency'
-
-export default <Route key="overview" path={`${root}`} component={Overview} />
+export default <Route key="slip" path={`${root}`} component={Swiper} />
