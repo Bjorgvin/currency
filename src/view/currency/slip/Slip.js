@@ -11,13 +11,21 @@ class Slip extends Component {
   render() {
     const { currency, time } = this.props
     if (currency) {
+      console.log(currency)
+      const list = currency.map(curr => {
+        return (
+          <div key={curr.shortName}>
+            {curr.longName}
+          </div>
+        )
+      })
       return (
         <div>
           <span>
             Currency last updated: {`${time}`}
           </span>
           <div>
-            {currency.length}
+            {list}
           </div>
         </div>
       )
