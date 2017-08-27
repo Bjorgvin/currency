@@ -1,12 +1,21 @@
 import { connect } from 'react-redux'
 import Calculator from './Calculator'
+import { fetchCurrency } from '../../../platform/currency/actions'
+import { getCurrency } from '../../../platform/currency/reducer'
+
+import { fetchSettings } from '../../../platform/settings/actions'
+import { getFrom, getTo } from '../../../platform/settings/reducer'
+
 // connect method will return a connected component
 const ConnectedCalculator = connect(
   (state, props) => ({
-    /* some property */
+    currency: getCurrency(state),
+    to: getTo(state),
+    from: getFrom(state),
   }),
   {
-    /* fetchCurrency */
+    fetchSettings,
+    fetchCurrency,
   },
 )(Calculator)
 

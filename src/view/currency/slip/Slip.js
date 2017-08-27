@@ -25,7 +25,7 @@ class Slip extends Component {
       const t = currency.find(c => c.shortName === to)
       const ratio = f.value / t.value
       const list = []
-      for (var k = 0; k < 5; k++) {
+      for (var k = 0; k < 4; k++) {
         const kn = k + 1
         list.push(
           <Line id={kn} key={kn}>
@@ -34,7 +34,7 @@ class Slip extends Component {
           </Line>,
         )
       }
-      for (var i = 10; i < 1000; i++) {
+      for (var i = 5; i < 1000; i++) {
         if (i % 5 === 0) {
           const n = i
           list.push(
