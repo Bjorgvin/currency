@@ -1,12 +1,22 @@
 import { connect } from 'react-redux'
+import { fetchCurrency } from '../../../platform/currency/actions'
+import { getCurrency } from '../../../platform/currency/reducer'
+
+import { fetchSettings, saveSettings } from '../../../platform/settings/actions'
+import { getFrom, getTo } from '../../../platform/settings/reducer'
+
 import Settings from './Settings'
 // connect method will return a connected component
 const ConnectedSettings = connect(
   (state, props) => ({
-    /* some property */
+    to: getTo(state),
+    from: getFrom(state),
+    currency: getCurrency(state),
   }),
   {
-    /* fetchCurrency */
+    fetchSettings,
+    saveSettings,
+    fetchCurrency,
   },
 )(Settings)
 

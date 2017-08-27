@@ -26,16 +26,18 @@ export default class SwipeComponent extends React.Component {
   }
   swipedDown(e, deltaY, isFlick) {
     // start fetching new currency
+    // console.log('Fetch currency...', e, deltaY, isFlick)
     this.setState({ loader: false })
-    console.log('Fetch currency...', e, deltaY, isFlick)
+    console.log('the user is pulling down ... we should fetch')
   }
+
   render() {
     const { loader, size } = this.state
-    const showLoader = loader && size > 15
+    const showLoader = false //loader && size > 15
     return (
       <Swipeable
         onSwiping={this.swiping}
-        // onSwiped={this.swiped}
+        onSwiped={this.swiped}
         // onSwipingLeft={this.swipingLeft}
         // onSwipingRight={this.swipingRight}
         // onSwipedUp={this.swipedUp}
@@ -44,7 +46,7 @@ export default class SwipeComponent extends React.Component {
         <div>
           {showLoader &&
             <div>
-              loader {size}
+              loader {loader}:{size}
             </div>}
           <Wrapper />
         </div>

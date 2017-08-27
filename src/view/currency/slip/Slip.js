@@ -9,9 +9,24 @@ class Slip extends Component {
   }
 
   render() {
-    const { currency, time } = this.props
+    const { currency, time, to, from } = this.props
     if (currency) {
+      console.log(`from ${from}`)
+      console.log(`  to ${to}`)
       console.log(currency)
+      const f = currency.find(c => c.shortName === from)
+      const t = currency.find(c => c.shortName === to)
+      const ratio = f.value / t.value
+      const list = []
+      for (var i = 1; i < 101; i++) {
+        list.push(
+          <div key={i}>
+            {`${i} ${f.shortName}`} ==={' '}
+            {`${(ratio * i).toFixed(5)} ${t.shortName}`}
+          </div>,
+        )
+      }
+      /*
       const list = currency.map(curr => {
         return (
           <div key={curr.shortName}>
@@ -19,6 +34,7 @@ class Slip extends Component {
           </div>
         )
       })
+      */
       return (
         <div>
           <span>

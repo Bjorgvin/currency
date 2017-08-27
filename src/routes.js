@@ -10,10 +10,11 @@ export default function routes(history) {
     top: 0;
     left: 0;
     width: 100%;
-    height: 30px;
+    height: 35px;
     position: fixed;
     display: flex;
     align-items: center;
+    z-index: 9999;
     background-color: ${props => darken(0.3, props.theme.green)};
   `
   const StyledLink = styled(Link)`

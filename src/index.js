@@ -29,6 +29,7 @@ const AppContainer = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 35px;
+  padding-bottom: 35px;
   font-size: 18px;
   font-family: 'Overpass', sans-serif;
 `
