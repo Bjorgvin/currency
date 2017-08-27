@@ -22,23 +22,15 @@ class Slip extends Component {
         list.push(
           <div key={i}>
             {`${i} ${f.shortName}`} ==={' '}
-            {`${(ratio * i).toFixed(5)} ${t.shortName}`}
+            {`${(ratio * i).toLocaleString()} ${t.shortName}`}
           </div>,
         )
       }
-      /*
-      const list = currency.map(curr => {
-        return (
-          <div key={curr.shortName}>
-            {curr.longName}
-          </div>
-        )
-      })
-      */
+
       return (
         <div>
           <span>
-            Currency last updated: {`${time}`}
+            Currency last updated: {`${time.toLocaleDateString()}`}
           </span>
           <div>
             {list}
