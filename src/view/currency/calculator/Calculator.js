@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NumberPad from './NumberPad'
+
 class Calculator extends Component {
   constructor(props) {
     super(props)
@@ -21,9 +22,8 @@ class Calculator extends Component {
       const newNumber = Number(`${num}${number}`)
       this.setState({ number: newNumber })
     } else {
-      this.setState({ number: number })
+      this.setState({ number })
     }
-    console.log(this.state)
   }
 
   numpadDel() {
@@ -61,9 +61,8 @@ class Calculator extends Component {
           />
         </div>
       )
-    } else {
-      return <div>loading</div>
     }
+    return <div>loading</div>
   }
 }
 export default Calculator

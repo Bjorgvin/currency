@@ -1,3 +1,4 @@
+/* eslint max-len: ["error", { "comments": 650 }] */
 import React from 'react'
 import Swipeable from 'react-swipeable'
 import Wrapper from './Wrapper'
@@ -11,38 +12,45 @@ export default class SwipeComponent extends React.Component {
     this.state = { loader: false }
   }
   swiping(e, deltaX, deltaY, absX, absY, velocity) {
-    // show loader
-    // console.log(`Showing loader deltaX ${deltaX} deltaY ${deltaY} absX ${absX} absY ${absY} velocity ${velocity}`)
+    // eslint-disable-next-line
+    console.log(
+      // eslint-disable-next-line
+      `Showing loader deltaX ${deltaX} deltaY ${deltaY} absX ${absX} absY ${absY} velocity ${velocity}`,
+    )
     this.setState({ loader: true, size: absY })
   }
+  // eslint-disable-next-line
   swiped(e, deltaX, deltaY, isFlick, velocity) {
-    // console.log(`You swiped deltaX ${deltaX} deltaY ${deltaY} isFlick ${isFlick} velocity ${velocity}`)
+    // eslint-disable-next-line
+    console.log(
+      // eslint-disable-next-line
+      `You swiped deltaX ${deltaX} deltaY ${deltaY} isFlick ${isFlick} velocity ${velocity}`, // eslint-disable-line
+    )
   }
+  // eslint-disable-next-line
   swipingLeft(e, absX) {
-    // console.log("You're Swiping to the Left...", e, absX)
+    // eslint-disable-next-line
+    console.log("You're Swiping to the Left...", e, absX)
   }
+  // eslint-disable-next-line
   swipedUp(e, deltaY, isFlick) {
-    // console.log('You Swiped Up...', e, deltaY, isFlick)
+    // eslint-disable-next-line
+    console.log('You Swiped Up...', e, deltaY, isFlick)
   }
+  // eslint-disable-next-line
   swipedDown(e, deltaY, isFlick) {
-    // start fetching new currency
-    // console.log('Fetch currency...', e, deltaY, isFlick)
+    // eslint-disable-next-line
+    console.log('Fetch currency...', e, deltaY, isFlick)
     this.setState({ loader: false })
+    // eslint-disable-next-line
     console.log('the user is pulling down ... we should fetch')
   }
 
   render() {
     const { loader, size } = this.state
-    const showLoader = false //loader && size > 15
+    const showLoader = false // loader && size > 15
     return (
-      <Swipeable
-        onSwiping={this.swiping}
-        onSwiped={this.swiped}
-        // onSwipingLeft={this.swipingLeft}
-        // onSwipingRight={this.swipingRight}
-        // onSwipedUp={this.swipedUp}
-        onSwipedDown={this.swipedDown}
-      >
+      <Swipeable /* onSwiping={this.swiping} */>
         <div>
           {showLoader &&
             <div>

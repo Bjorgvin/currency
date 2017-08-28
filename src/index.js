@@ -1,3 +1,4 @@
+/* global document */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import styled, { ThemeProvider, injectGlobal } from 'styled-components'
@@ -5,16 +6,18 @@ import { normalize } from 'polished'
 import { Provider } from 'react-redux'
 import { createStore, compose, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import createRoutes from './routes.js'
+import createRoutes from './routes'
 
 import reducers from './reducers'
 
 import history from './history'
 
 import sagas from './sagas'
+
 const sagaMiddleware = createSagaMiddleware()
 const middleware = applyMiddleware(sagaMiddleware)
 
+// eslint-disable-next-line
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducers, composeEnhancers(middleware))
 

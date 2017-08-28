@@ -5,7 +5,7 @@ import { getFrom, getTo } from '../../../platform/settings/reducer'
 import Slip from './Slip'
 // connect method will return a connected component
 const ConnectedSlip = connect(
-  (state, props) => ({
+  state => ({
     currency: getCurrency(state),
     time: getLastTime(state),
     to: getTo(state),

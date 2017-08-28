@@ -8,7 +8,7 @@ import { getFrom, getTo } from '../../../platform/settings/reducer'
 import Settings from './Settings'
 // connect method will return a connected component
 const ConnectedSettings = connect(
-  (state, props) => ({
+  state => ({
     to: getTo(state),
     from: getFrom(state),
     currency: getCurrency(state),

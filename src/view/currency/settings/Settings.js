@@ -9,26 +9,22 @@ class Settings extends Component {
   render() {
     const { from, to, currency, saveSettings } = this.props
     if (!currency) return <div>loading</div>
-    const fromList = currency.map(curr => {
-      return (
-        <div key={curr.shortName}>
-          <button onClick={() => saveSettings({ from: curr.shortName, to })}>
-            {curr.longName}
-          </button>
-          {curr.shortName === from && <span>------</span>}
-        </div>
-      )
-    })
-    const toList = currency.map(curr => {
-      return (
-        <div key={curr.shortName}>
-          <button onClick={() => saveSettings({ from, to: curr.shortName })}>
-            {curr.longName}
-          </button>
-          {curr.shortName === to && <span>------</span>}
-        </div>
-      )
-    })
+    const fromList = currency.map(curr =>
+      (<div key={curr.shortName}>
+        <button onClick={() => saveSettings({ from: curr.shortName, to })}>
+          {curr.longName}
+        </button>
+        {curr.shortName === from && <span>------</span>}
+      </div>),
+    )
+    const toList = currency.map(curr =>
+      (<div key={curr.shortName}>
+        <button onClick={() => saveSettings({ from, to: curr.shortName })}>
+          {curr.longName}
+        </button>
+        {curr.shortName === to && <span>------</span>}
+      </div>),
+    )
     return (
       <div>
         <div>

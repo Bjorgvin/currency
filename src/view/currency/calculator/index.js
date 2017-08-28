@@ -8,7 +8,7 @@ import { getFrom, getTo } from '../../../platform/settings/reducer'
 
 // connect method will return a connected component
 const ConnectedCalculator = connect(
-  (state, props) => ({
+  state => ({
     currency: getCurrency(state),
     to: getTo(state),
     from: getFrom(state),

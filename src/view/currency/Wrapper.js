@@ -1,9 +1,12 @@
+/* global window */
+
 import React from 'react'
 import ReactSwipe from 'react-swipe'
+import styled from 'styled-components'
 import Slip from './slip'
 import Calculator from './calculator'
 import Settings from './settings'
-import styled from 'styled-components'
+
 const Content = styled.div`overflow: scroll;`
 const Foot = styled.div`
   position: fixed;
@@ -18,17 +21,23 @@ const Foot = styled.div`
 `
 
 export default class Wrapper extends React.Component {
-  slideChanged(index, element) {
+  constructor(props) {
+    super(props)
+    this.slideChanged = this.slideChanged.bind(this)
+  }
+  // eslint-disable-next-line
+  slideChanged() {
     // when changing slides we scroll to top
     window.scrollTo(0, 0)
   }
-
   render() {
     return (
       <div>
         <Content>
           <ReactSwipe
-            ref="reactSwipe"
+            ref={(c) => {
+              this.reactSwipe = c
+            }}
             swipeOptions={{
               callback: this.slideChanged,
               startSlide: 1,
@@ -47,15 +56,9 @@ export default class Wrapper extends React.Component {
           </ReactSwipe>
         </Content>
         <Foot>
-          <button onClick={() => this.refs.reactSwipe.slide(0, 300)}>
-            Calculator
-          </button>
-          <button onClick={() => this.refs.reactSwipe.slide(1, 300)}>
-            Slip
-          </button>
-          <button onClick={() => this.refs.reactSwipe.slide(2, 300)}>
-            Settings
-          </button>
+          <button onClick={() => this.reactSwipe.slide(0, 300)}>Calculator</button>
+          <button onClick={() => this.reactSwipe.slide(1, 300)}>Slip</button>
+          <button onClick={() => this.reactSwipe.slide(2, 300)}>Settings</button>
         </Foot>
       </div>
     )

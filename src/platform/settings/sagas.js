@@ -3,6 +3,7 @@ import { put, fork, call, takeEvery } from 'redux-saga/effects'
 import { getLocalStorageData, setLocalStorageData } from '../localstorage'
 
 import { fetchSettingsResolved, saveSettingsResolved, type } from './actions'
+
 const defaultSettings = { from: 'ISK', to: 'USD' }
 
 export function* onFetchSettings() {
@@ -15,7 +16,7 @@ export function* onSaveSettings(action) {
   yield put(saveSettingsResolved(action.payload))
 }
 
-export default function*() {
+export default function* () {
   yield fork(function* watchFetchSettings() {
     yield takeEvery(type.fetchSettings, onFetchSettings)
   })
