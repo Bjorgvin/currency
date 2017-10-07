@@ -49,7 +49,7 @@ class Calculator extends Component {
       const t = currency.find(c => c.shortName === to)
       const ratio = f.value / t.value
       return (
-        <div>
+        <div id="calc">
           <div>
             {`${number} ${f.shortName}`}
             = {`${(ratio * number).toLocaleString()} ${t.shortName}`}

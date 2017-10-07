@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Slip from './slip'
 import Calculator from './calculator'
 import Settings from './settings'
+import { disableScroll, enableScroll } from '../../scrolling'
 
 const Content = styled.div`overflow: scroll;`
 const Foot = styled.div`
@@ -26,7 +27,16 @@ export default class Wrapper extends React.Component {
     this.slideChanged = this.slideChanged.bind(this)
   }
   // eslint-disable-next-line
-  slideChanged() {
+  slideChanged(index) {
+    switch (index) {
+      case 0:
+        // calculator
+        disableScroll()
+        break
+      default:
+        enableScroll()
+        break
+    }
     // when changing slides we scroll to top
     window.scrollTo(0, 0)
   }
