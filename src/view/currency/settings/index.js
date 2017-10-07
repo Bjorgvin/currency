@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import { fetchCurrency } from '../../../platform/currency/actions'
 import { getCurrency } from '../../../platform/currency/reducer'
 
@@ -21,4 +22,4 @@ const ConnectedSettings = connect(
 )(Settings)
 
 // now we export the connected component
-export default ConnectedSettings
+export default withRouter(ConnectedSettings)

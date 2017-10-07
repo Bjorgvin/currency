@@ -8,7 +8,7 @@ export default function routes(history) {
     <Router history={history}>
       <div>
         <Switch>
-          {currency}
+          {currency(history)}
           <Route component={() => <Redirect to={`${root}`} />} />
         </Switch>
       </div>

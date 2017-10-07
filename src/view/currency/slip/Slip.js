@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import Swipeable from 'react-swipeable'
+import { settings, calculator } from '../constants'
 
-const Line = styled.div`border-bottom: 1px solid;`
-const LineBetween = styled.div`
-  display: ${props => (props.visible ? 'block' : 'none')};
-  background-color: #648325;
-`
+import { Line, LineBetween } from './components'
 
 class Slip extends Component {
   constructor(props) {
@@ -17,11 +14,21 @@ class Slip extends Component {
       }
     }
     this.state = { visible }
+    this.onSwipedLeft = this.onSwipedLeft.bind(this)
+    this.onSwipedRight = this.onSwipedRight.bind(this)
   }
 
   componentWillMount() {
     const { fetchCurrency } = this.props
     fetchCurrency()
+  }
+
+  onSwipedLeft() {
+    this.props.history.push(settings)
+  }
+
+  onSwipedRight() {
+    this.props.history.push(calculator)
   }
 
   lineClick(event, linenumber) {
@@ -69,14 +76,10 @@ class Slip extends Component {
       }
 
       return (
-        <div>
-          <span>
-            Currency last updated: {`${time.toLocaleDateString()}`}
-          </span>
-          <div>
-            {list}
-          </div>
-        </div>
+        <Swipeable onSwipedLeft={this.onSwipedLeft} onSwipedRight={this.onSwipedRight}>
+          <span>Currency last updated: {`${time.toLocaleDateString()}`}</span>
+          <div>{list}</div>
+        </Swipeable>
       )
     }
     return <div>loading currency</div>

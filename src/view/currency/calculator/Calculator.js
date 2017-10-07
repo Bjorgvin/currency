@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import Swipeable from 'react-swipeable'
 import NumberPad from './NumberPad'
+import { slip } from '../constants'
 
 class Calculator extends Component {
   constructor(props) {
@@ -7,13 +9,17 @@ class Calculator extends Component {
     this.numpadNumber = this.numpadNumber.bind(this)
     this.numpadDel = this.numpadDel.bind(this)
     this.numpadClear = this.numpadClear.bind(this)
-
+    this.onSwipedLeft = this.onSwipedLeft.bind(this)
     this.state = { number: 0 }
   }
   componentWillMount() {
     const { fetchCurrency, fetchSettings } = this.props
     fetchCurrency()
     fetchSettings()
+  }
+
+  onSwipedLeft() {
+    this.props.history.push(slip)
   }
 
   numpadNumber(number) {
@@ -40,7 +46,6 @@ class Calculator extends Component {
   numpadClear() {
     this.setState({ number: 0 })
   }
-
   render() {
     const { currency, to, from } = this.props
     const { number } = this.state
@@ -49,17 +54,19 @@ class Calculator extends Component {
       const t = currency.find(c => c.shortName === to)
       const ratio = f.value / t.value
       return (
-        <div id="calc">
-          <div>
-            {`${number} ${f.shortName}`}
-            = {`${(ratio * number).toLocaleString()} ${t.shortName}`}
+        <Swipeable onSwipedLeft={this.onSwipedLeft}>
+          <div id="calc">
+            <div>
+              {`${number} ${f.shortName}`}
+              = {`${(ratio * number).toLocaleString()} ${t.shortName}`}
+            </div>
+            <NumberPad
+              onClear={this.numpadClear}
+              onDel={this.numpadDel}
+              onNumber={this.numpadNumber}
+            />
           </div>
-          <NumberPad
-            onClear={this.numpadClear}
-            onDel={this.numpadDel}
-            onNumber={this.numpadNumber}
-          />
-        </div>
+        </Swipeable>
       )
     }
     return <div>loading</div>
