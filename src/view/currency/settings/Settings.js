@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Swipeable from 'react-swipeable'
 import { slip } from '../constants'
+import { CurrencyList, CurrencyListItem } from './components'
 
 class Settings extends Component {
   constructor(props) {
@@ -22,23 +23,30 @@ class Settings extends Component {
     const { from, to, currency, saveSettings } = this.props
     if (!currency) return <div>loading</div>
     const fromList = currency.map(curr => (
-      <div key={curr.shortName}>
-        <button onClick={() => saveSettings({ from: curr.shortName, to })}>{curr.longName}</button>
-        {curr.shortName === from && <span>------</span>}
-      </div>
+      <CurrencyListItem
+        role="button"
+        key={curr.shortName}
+        onClick={() => saveSettings({ from: curr.shortName, to })}
+        selected={curr.shortName === from}
+      >
+        {curr.longName}
+      </CurrencyListItem>
     ))
     const toList = currency.map(curr => (
-      <div key={curr.shortName}>
-        <button onClick={() => saveSettings({ from, to: curr.shortName })}>{curr.longName}</button>
-        {curr.shortName === to && <span>------</span>}
-      </div>
+      <CurrencyListItem
+        key={curr.shortName}
+        onClick={() => saveSettings({ from, to: curr.shortName })}
+        selected={curr.shortName === to}
+      >
+        {curr.longName}
+      </CurrencyListItem>
     ))
     return (
       <Swipeable onSwipedRight={this.onSwipedRight}>
-        <div>From: {from}</div>
-        {fromList}
-        <div>To: {to}</div>
-        {toList}
+        From: {from}
+        <CurrencyList>{fromList}</CurrencyList>
+        To: {to}
+        <CurrencyList>{toList}</CurrencyList>
       </Swipeable>
     )
   }

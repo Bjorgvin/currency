@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Slip from './slip'
 import Calculator from './calculator'
 import Settings from './settings'
-import { Footer, FooterButton } from './components/Footer'
+import { Footer, FooterButton } from './Footer'
 import { calculator, slip, settings } from './constants'
 
 const Content = styled.div`overflow: scroll;`
