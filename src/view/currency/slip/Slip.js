@@ -74,7 +74,11 @@ class Slip extends Component {
           }
         }
       }
-
+      list.push(
+        <Line id={1000} key={1000}>
+          {`${1000} ${f.shortName}`} === {`${(ratio * 1000).toLocaleString()} ${t.shortName}`}
+        </Line>,
+      )
       return (
         <Swipeable onSwipedLeft={this.onSwipedLeft} onSwipedRight={this.onSwipedRight}>
           <span>Currency last updated: {`${time.toLocaleDateString()}`}</span>

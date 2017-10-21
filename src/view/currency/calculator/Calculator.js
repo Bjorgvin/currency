@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Swipeable from 'react-swipeable'
 import NumberPad from './NumberPad'
+import { CalcContainer, CalcScreen } from './components'
 import { slip } from '../constants'
 
 class Calculator extends Component {
@@ -55,17 +56,17 @@ class Calculator extends Component {
       const ratio = f.value / t.value
       return (
         <Swipeable onSwipedLeft={this.onSwipedLeft}>
-          <div id="calc">
-            <div>
-              {`${number} ${f.shortName}`}
-              = {`${(ratio * number).toLocaleString()} ${t.shortName}`}
-            </div>
+          <CalcContainer>
+            <CalcScreen>
+              <div>{`${number} ${f.shortName}`}</div>
+              <div>{`${(ratio * number).toLocaleString()} ${t.shortName}`}</div>
+            </CalcScreen>
             <NumberPad
               onClear={this.numpadClear}
               onDel={this.numpadDel}
               onNumber={this.numpadNumber}
             />
-          </div>
+          </CalcContainer>
         </Swipeable>
       )
     }

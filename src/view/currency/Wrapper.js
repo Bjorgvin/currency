@@ -8,7 +8,7 @@ import Calculator from './calculator'
 import Settings from './settings'
 import { disableScroll, enableScroll } from '../../scrolling'
 
-const Content = styled.div`overflow: scroll;`
+const Content = styled.div``
 const Foot = styled.div`
   position: fixed;
   left: 0;

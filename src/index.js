@@ -46,11 +46,7 @@ const theme = {
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <AppContainer>
-        <AppContent>
-          {routes}
-        </AppContent>
-      </AppContainer>
+      <AppContent>{routes}</AppContent>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root'),
